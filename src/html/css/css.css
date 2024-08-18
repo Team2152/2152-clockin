@@ -1,0 +1,130 @@
+body {
+    background-color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    color: #f0f0f0;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: scroll; /* Ensure scrolling is always enabled */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.content-wrapper {
+    width: 75%; /* Set the width to 75% of the viewport */
+    max-width: 1200px; /* Add a max-width for very large screens */
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.signcontainer {
+    margin-bottom: 20px;
+    padding: 0 10px; /* Add padding to create space around input */
+}
+
+input[type="text"] {
+    width: 100%;
+    max-width: 100%; /* Prevent the input from exceeding the parent's width */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    background-color: #3a3a3a;
+    color: #fff;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+input[type="text"]::placeholder {
+    color: #bbb;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px; /* Add padding to match the input field */
+}
+
+.btn {
+    background-color: #ff6000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 48%;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e05500;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #444;
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #444;
+}
+
+th {
+    background-color: #3a3a3a;
+    color: #f0f0f0;
+}
+
+td {
+    background-color: #2c2c2c;
+    color: #ddd;
+}
+
+@media (max-width: 600px) {
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .btn:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.message-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    display: none; /* Initially hidden */
+}
+
+.message-container.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.message-container.error {
+    background-color: #f44336;
+    color: white;
+}

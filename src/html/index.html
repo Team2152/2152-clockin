@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="./css/css.css" rel="stylesheet">
+</head>
+<body class="maincontainer">
+    <div class="content-wrapper">
+        <div class="message-container" id="messageContainer"></div>
+        <div class="signcontainer">
+            <div class="container">
+                <input type="text" id="userId" name="userId" placeholder="Enter your ID">
+            </div>
+            <div class="container btn-group">
+                <button id="signIn" class="btn">Sign In</button>
+                <button id="signOut" class="btn">Sign Out</button>
+            </div>
+        </div>
+        <hr>
+
+        <table id="activeTable">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -97,7 +97,7 @@ function appendSheet(userId, duration) {
     const jsonData = {
         spreadsheetId: "12xwz8spAzkXQqzTzrBgh8BQdmfS3g5a7XyyxtDpgdIc",
         date: DateTime.now().setZone('America/New_York').toISODate().split('T')[0],
-        userId: userId.value,
+        userId: userId.value.toUpperCase(),
         duration: duration
     };
     

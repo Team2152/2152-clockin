@@ -128,3 +128,23 @@ td {
     background-color: #f44336;
     color: white;
 }
+
+.titlecontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 5%; /* Space between text and image */
+    color: #f0f0f0;
+}
+
+.titlecontainer img {
+    max-width: 100%; /* Ensure the image does not exceed its container's width */
+    height: auto;
+    border-radius: 4px;
+}

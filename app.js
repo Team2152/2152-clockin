@@ -1,3 +1,5 @@
+const { DateTime } = luxon;
+
 const signInButton = document.getElementById('signIn');
 const signOutButton = document.getElementById('signOut');
 
@@ -94,7 +96,7 @@ function appendSheet(userId, duration) {
     console.log(duration);
     const jsonData = {
         spreadsheetId: "12xwz8spAzkXQqzTzrBgh8BQdmfS3g5a7XyyxtDpgdIc",
-        date: new Date().toISOString().split('T')[0],
+        date: DateTime.now().setZone('America/New_York').toISODate().split('T')[0],
         userId: userId.value,
         duration: duration
     };

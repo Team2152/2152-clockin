@@ -69,9 +69,18 @@ function populateUserTable() {
         valueCell.textContent = formatTime(getTime() - value);
         row.appendChild(valueCell);
 
-        const howDoesThisWork = document.createElement('button')
-        howDoesThisWork.textContent = 'Sign me Out'
-        row.appendChild(howDoesThisWork);
+        const buttonContainer = document.createElement('td');
+        row.appendChild(buttonContainer);
+
+        const howDoesThisWork = document.createElement('button');
+        howDoesThisWork.textContent = 'Sign me Out';
+        howDoesThisWork.className = 'btn';
+        howDoesThisWork.style.width = "100%";
+        buttonContainer.appendChild(howDoesThisWork);
+
+        howDoesThisWork.addEventListener('click', ()=>{
+            appendSheet();
+        });
 
         tableBody.appendChild(row);
     }

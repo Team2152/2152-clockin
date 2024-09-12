@@ -79,7 +79,12 @@ function populateUserTable() {
         buttonContainer.appendChild(howDoesThisWork);
 
         howDoesThisWork.addEventListener('click', ()=>{
-            appendSheet({value: keyCell.textContent}, valueCell.textContent);
+            const startTime = activeUsers[keyCell.textContent.toUpperCase()]
+            const duration = formatTime(getTime() - startTime);
+            console.log(appendSheet({value: keyCell.textContent}, duration));
+            delete activeUsers[keyCell.textContent.toUpperCase()];
+            updateUsers();
+            displayMessage(activeUsers[keyCell.textContent.toUpperCase()] + " signed out successfully. Duration: " + duration, 'success');
         });
 
         tableBody.appendChild(row);

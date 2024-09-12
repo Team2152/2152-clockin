@@ -6,6 +6,8 @@ const signOutButton = document.getElementById('signOut');
 const tableBody = document.querySelector('#activeTable tbody');
 const messageContainer = document.getElementById('messageContainer');
 
+const liveToggle = true;
+
 let activeUsers = JSON.parse(localStorage.getItem('activeUsers')) || {};
 
 signInButton.addEventListener('click', () => {
@@ -69,6 +71,24 @@ function populateUserTable() {
         valueCell.textContent = formatTime(getTime() - value);
         row.appendChild(valueCell);
 
+        const buttonContainer = document.createElement('td');
+        row.appendChild(buttonContainer);
+
+        const signOutButton2 = document.createElement('button');
+        signOutButton2.textContent = 'Sign me Out';
+        signOutButton2.className = 'btn';
+        signOutButton2.style.width = "100%";
+        buttonContainer.appendChild(signOutButton2);
+
+        signOutButton2.addEventListener('click', ()=>{
+            const startTime = activeUsers[keyCell.textContent.toUpperCase()]
+            const duration = formatTime(getTime() - startTime);
+            console.log(appendSheet({value: keyCell.textContent}, duration));
+            delete activeUsers[keyCell.textContent.toUpperCase()];
+            updateUsers();
+            displayMessage(keyCell.textContent.toUpperCase() + " signed out successfully. Duration: " + duration, 'success');
+        });
+
         tableBody.appendChild(row);
     }
 }
@@ -100,6 +120,8 @@ function appendSheet(userId, duration) {
         userId: userId.value.toUpperCase(),
         duration: duration
     };
+
+    if (!liveToggle) {return}
     
     fetch('https://script.google.com/macros/s/AKfycbw3OqPK2qFiKOBNZkApbB2Fge645B8wXtuWf8FP1h9K0rh97mvPgNurA7XeBEfv1lUc/exec', {
         method: 'POST',

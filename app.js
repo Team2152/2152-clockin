@@ -69,6 +69,10 @@ function populateUserTable() {
         valueCell.textContent = formatTime(getTime() - value);
         row.appendChild(valueCell);
 
+        const howDoesThisWork = document.createElement('button')
+        howDoesThisWork.textContent = 'Sign me Out'
+        row.appendChild(howDoesThisWork);
+
         tableBody.appendChild(row);
     }
 }
@@ -101,15 +105,5 @@ function appendSheet(userId, duration) {
         duration: duration
     };
     
-    fetch('https://script.google.com/macros/s/AKfycbw3OqPK2qFiKOBNZkApbB2Fge645B8wXtuWf8FP1h9K0rh97mvPgNurA7XeBEfv1lUc/exec', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jsonData),
-        mode: 'no-cors'
-    })
-    // .then(response => console.log('Response: ', response))
-    // .then(result => console.log('Form submitted successfully: ', result))
-    .catch(error => displayMessage("An error occured while submitting", 'error'));
+    //hello. i am scared.
 }

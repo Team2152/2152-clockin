@@ -84,7 +84,7 @@ function populateUserTable() {
             console.log(appendSheet({value: keyCell.textContent}, duration));
             delete activeUsers[keyCell.textContent.toUpperCase()];
             updateUsers();
-            displayMessage(activeUsers[keyCell.textContent.toUpperCase()] + " signed out successfully. Duration: " + duration, 'success');
+            displayMessage(keyCell.textContent.toUpperCase() + " signed out successfully. Duration: " + duration, 'success');
         });
 
         tableBody.appendChild(row);

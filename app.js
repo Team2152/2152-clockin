@@ -79,7 +79,7 @@ function populateUserTable() {
         buttonContainer.appendChild(howDoesThisWork);
 
         howDoesThisWork.addEventListener('click', ()=>{
-            appendSheet();
+            appendSheet(keyCell.textContent, valueCell.textContent);
         });
 
         tableBody.appendChild(row);

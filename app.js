@@ -6,6 +6,8 @@ const signOutButton = document.getElementById('signOut');
 const tableBody = document.querySelector('#activeTable tbody');
 const messageContainer = document.getElementById('messageContainer');
 
+const liveToggle = true;
+
 let activeUsers = JSON.parse(localStorage.getItem('activeUsers')) || {};
 
 signInButton.addEventListener('click', () => {
@@ -72,13 +74,13 @@ function populateUserTable() {
         const buttonContainer = document.createElement('td');
         row.appendChild(buttonContainer);
 
-        const howDoesThisWork = document.createElement('button');
-        howDoesThisWork.textContent = 'Sign me Out';
-        howDoesThisWork.className = 'btn';
-        howDoesThisWork.style.width = "100%";
-        buttonContainer.appendChild(howDoesThisWork);
+        const signOutButton2 = document.createElement('button');
+        signOutButton2.textContent = 'Sign me Out';
+        signOutButton2.className = 'btn';
+        signOutButton2.style.width = "100%";
+        buttonContainer.appendChild(signOutButton2);
 
-        howDoesThisWork.addEventListener('click', ()=>{
+        signOutButton2.addEventListener('click', ()=>{
             const startTime = activeUsers[keyCell.textContent.toUpperCase()]
             const duration = formatTime(getTime() - startTime);
             console.log(appendSheet({value: keyCell.textContent}, duration));
@@ -118,5 +120,18 @@ function appendSheet(userId, duration) {
         userId: userId.value.toUpperCase(),
         duration: duration
     };
+
+    if (!liveToggle) {return}
     
+    fetch('https://script.google.com/macros/s/AKfycbw3OqPK2qFiKOBNZkApbB2Fge645B8wXtuWf8FP1h9K0rh97mvPgNurA7XeBEfv1lUc/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData),
+        mode: 'no-cors'
+    })
+    // .then(response => console.log('Response: ', response))
+    // .then(result => console.log('Form submitted successfully: ', result))
+    .catch(error => displayMessage("An error occured while submitting", 'error'));
 }
